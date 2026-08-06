@@ -1,0 +1,26 @@
+# Apps watched by this F-Droid repository. metascoop fetches the latest
+# GitHub Release of each repo, downloads the .apk asset, runs `fdroid update`
+# and commits the fresh index. See setup.md for details.
+#
+# For each app the `git` URL must point to a GitHub repo whose releases
+# contain exactly one .apk asset (see TASK-093 in Ahzed11/chore-app).
+chore-app:
+  git: https://github.com/Ahzed11/chore-app
+  name: "ChoreApp"
+  description: |
+    Self-hosted household chore coordinator. Members join a household via
+    invite link/QR, chores are auto-assigned round-robin (or manually),
+    completing a chore awards fixed points, and a per-household leaderboard
+    ranks members by points (all-time / this-week / this-month).
+
+    <b>Features</b>
+
+    - Chores with recurrence, auto-assignment and admin reassignment
+    - Points + leaderboards
+    - Shared grocery list
+    - Invite members via QR code / deep link
+    - Bring your own server (server URL configured in-app)
+
+  # Valid category from https://f-droid.org/en/docs/Build_Metadata_Reference/#Categories
+  categories:
+    - Organization
