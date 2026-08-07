@@ -1,6 +1,16 @@
 {
-  "repo": {},
-  "requests": {},
+  "repo": {
+    "timestamp": 1786098827000,
+    "version": 20002,
+    "name": "ChoreApp F-Droid Repository",
+    "icon": "icon.png",
+    "address": "https://raw.githubusercontent.com/Ahzed11/chore-app-fdroid/main/fdroid/repo",
+    "description": "Auto-updating F-Droid repository for the ChoreApp household chore coordinator app."
+  },
+  "requests": {
+    "install": [],
+    "uninstall": []
+  },
   "apps": [],
   "packages": {}
 }
