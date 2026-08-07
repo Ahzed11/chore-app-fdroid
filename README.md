@@ -19,7 +19,7 @@ up the update without any manual reinstallation.
 2. Now you can add this repository to your F-Droid client (Settings → Repositories → `+`):
 
     ```
-    https://raw.githubusercontent.com/Ahzed11/chore-app-fdroid/main/fdroid/repo?fingerprint=2F197F32A3F10720DCEB884640306EA6309E688839BF4AE8E97F056CA2D83F7F
+    https://raw.githubusercontent.com/Ahzed11/chore-app-fdroid/main/fdroid/repo?fingerprint=52FB3A307BA6BA31BE81CB6A5FC50B13961397DC386C645EB381D3CBED0E4E5A
     ```
 
     Alternatively, you can also scan this QR code:
