@@ -1,8 +1,8 @@
 AuthorName: Ahzed11
 Categories:
     - Organization
-CurrentVersion: 1.0.0
-CurrentVersionCode: 10000
+CurrentVersion: 1.0.2
+CurrentVersionCode: 10002
 Description: |
     Self-hosted household chore coordinator. Members join a household via
     invite link/QR, chores are auto-assigned round-robin (or manually),

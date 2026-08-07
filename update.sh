@@ -22,6 +22,11 @@ elif [ $EXIT_CODE -eq 0 ]; then
 
     echo "This means that we now have changes we should push"
 
+    # TASK-100: never publish an index whose versions drifted signing keys —
+    # a signature change bricks updates for every installed user (Android
+    # refuses signature changes). Abort before committing if drift is found.
+    python3 check_signatures.py fdroid/repo/index-v1.json || exit 3
+
     git config --global user.name 'github-actions'
     git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
