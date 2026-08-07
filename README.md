@@ -12,6 +12,7 @@ up the update without any manual reinstallation.
 <!-- This table is auto-generated. Do not edit -->
 | Icon | Name | Description | Version |
 | --- | --- | --- | --- |
+| <a href="https://github.com/Ahzed11/chore-app"><img src="fdroid/repo/icons/" alt="ChoreApp icon" width="36px" height="36px"></a> | [**ChoreApp**](https://github.com/Ahzed11/chore-app) | Vibe-coded chore management app. Made for self-hosting. Use at your own risk. | 1.0.0 (10000) |
 <!-- end apps table -->
 
 ### How to use

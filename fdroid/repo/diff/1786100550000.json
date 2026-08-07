@@ -1,0 +1,30 @@
+{
+  "repo": {
+    "timestamp": 1786100554000,
+    "categories": {
+      "fdroid": null,
+      "Organization": {
+        "name": {
+          "en-US": "Organization"
+        }
+      }
+    }
+  },
+  "packages": {
+    "dev.ahzed11.choreapp": {
+      "metadata": {
+        "categories": [
+          "Organization"
+        ],
+        "sourceCode": "https://github.com/Ahzed11/chore-app",
+        "authorName": "Ahzed11",
+        "summary": {
+          "en-US": "Vibe-coded chore management app. Made for self-hosting. Use at your own risk."
+        },
+        "description": {
+          "en-US": "Self-hosted household chore coordinator. Members join a household via\ninvite link/QR, chores are auto-assigned round-robin (or manually),\ncompleting a chore awards fixed points, and a per-household leaderboard\nranks members by points (all-time / this-week / this-month).\n\n<b>Features</b>\n\n- Chores with recurrence, auto-assignment and admin reassignment\n- Points + leaderboards\n- Shared grocery list\n- Invite members via QR code / deep link\n- Bring your own server (server URL configured in-app)\n"
+        }
+      }
+    }
+  }
+}

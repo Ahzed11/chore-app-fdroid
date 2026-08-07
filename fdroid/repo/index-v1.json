@@ -1,6 +1,6 @@
 {
   "repo": {
-    "timestamp": 1786099296000,
+    "timestamp": 1786100554000,
     "version": 20002,
     "name": "ChoreApp F-Droid Repository",
     "icon": "icon.png",
@@ -11,6 +11,60 @@
     "install": [],
     "uninstall": []
   },
-  "apps": [],
-  "packages": {}
+  "apps": [
+    {
+      "authorName": "Ahzed11",
+      "categories": [
+        "Organization"
+      ],
+      "suggestedVersionName": "1.0.0",
+      "suggestedVersionCode": "10000",
+      "description": "Self-hosted household chore coordinator. Members join a household via\ninvite link/QR, chores are auto-assigned round-robin (or manually),\ncompleting a chore awards fixed points, and a per-household leaderboard\nranks members by points (all-time / this-week / this-month).\n\n<b>Features</b>\n\n- Chores with recurrence, auto-assignment and admin reassignment\n- Points + leaderboards\n- Shared grocery list\n- Invite members via QR code / deep link\n- Bring your own server (server URL configured in-app)\n",
+      "license": "Unknown",
+      "name": "ChoreApp",
+      "sourceCode": "https://github.com/Ahzed11/chore-app",
+      "summary": "Vibe-coded chore management app. Made for self-hosting. Use at your own risk.",
+      "added": 1786100550000,
+      "packageName": "dev.ahzed11.choreapp",
+      "lastUpdated": 1786100550000,
+      "localized": {
+        "en-US": {
+          "whatsNew": "ChoreApp v1.0.0\n\nAutomated release built from commit `72469273441d21eb6e5d409b451770214b757ba3` on `main`.\nThe F-Droid repository indexes this release automatically.\n"
+        }
+      }
+    }
+  ],
+  "packages": {
+    "dev.ahzed11.choreapp": [
+      {
+        "added": 1786100550000,
+        "apkName": "chore-app_v1.0.0.apk",
+        "hash": "8647dccc323067aaaa2b9f7b643ac36b9f7700bf4789ea6404fcb28906df8c71",
+        "hashType": "sha256",
+        "minSdkVersion": 24,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86_64"
+        ],
+        "packageName": "dev.ahzed11.choreapp",
+        "sig": "ddee3b8a4e02e525d58fb6219ac751af",
+        "signer": "db2b6263fc4ace46a63c0f094c8c55229d2b9e3c703c2be690d9053b83e446d3",
+        "size": 54585205,
+        "targetSdkVersion": 36,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "dev.ahzed11.choreapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 10000,
+        "versionName": "1.0.0"
+      }
+    ]
+  }
 }

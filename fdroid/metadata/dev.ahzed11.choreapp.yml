@@ -1,0 +1,23 @@
+AuthorName: Ahzed11
+Categories:
+    - Organization
+CurrentVersion: 1.0.0
+CurrentVersionCode: 10000
+Description: |
+    Self-hosted household chore coordinator. Members join a household via
+    invite link/QR, chores are auto-assigned round-robin (or manually),
+    completing a chore awards fixed points, and a per-household leaderboard
+    ranks members by points (all-time / this-week / this-month).
+
+    <b>Features</b>
+
+    - Chores with recurrence, auto-assignment and admin reassignment
+    - Points + leaderboards
+    - Shared grocery list
+    - Invite members via QR code / deep link
+    - Bring your own server (server URL configured in-app)
+IssueTracker: ""
+Name: ChoreApp
+SourceCode: https://github.com/Ahzed11/chore-app
+Summary: Vibe-coded chore management app. Made for self-hosting. Use at your own risk.
+WebSite: ""
