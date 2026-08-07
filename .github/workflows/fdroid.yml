@@ -7,6 +7,13 @@ on:
   schedule:
   - cron: "45 2 * * *"
 
+# Serialize runs: update.sh regenerates the index, commits and pushes back to
+# this repo, so two concurrent runs (e.g. a push near the scheduled time) would
+# race on the push and one would fail with "failed to push some refs".
+concurrency:
+  group: fdroid-repo-update
+  cancel-in-progress: false
+
 jobs:
   apps:
     name: "Generate repo from apps listing"
