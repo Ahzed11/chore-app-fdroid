@@ -10,3 +10,5 @@ fdroid/repo/status
 fdroid/metadata/**/phoneScreenshots
 
 metascoop/metascoop
+
+fdroid/.keypass
