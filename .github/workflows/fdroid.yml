@@ -39,12 +39,15 @@ jobs:
         run: |
           # Java (jarsigner/jar/keytool) + apksigner for index signing.
           sudo apt-get update
-          sudo apt-get install -y openjdk-17-jdk-headless apksigner
+          sudo apt-get install -y openjdk-17-jdk-headless apksigner python3-venv
           # The PPA's fdroidserver (2.4.2) bundles an androguard that cannot
           # parse ARSC v2 resources.arsc (APKs built with compileSdk >= 34) and
-          # is incompatible with androguard 4.1.4. Install 2.4.5 from PyPI,
-          # which pairs with androguard 4.1.4 (APK v2 signature + ARSC v2 fixes).
-          sudo pip3 install --break-system-packages fdroidserver==2.4.5
+          # is incompatible with androguard 4.1.4. Install 2.4.5 from PyPI in an
+          # isolated venv (avoids apt/pip package conflicts), which pairs with
+          # androguard 4.1.4 (APK v2 signature + ARSC v2 fixes).
+          sudo python3 -m venv /opt/fdroid
+          sudo /opt/fdroid/bin/pip install -q fdroidserver==2.4.5
+          sudo ln -sf /opt/fdroid/bin/fdroid /usr/local/bin/fdroid
 
       - name: Set up repo secrets
         run: |
