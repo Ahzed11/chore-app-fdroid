@@ -14,7 +14,7 @@
       }
     },
     "address": "https://raw.githubusercontent.com/Ahzed11/chore-app-fdroid/main/fdroid/repo",
-    "timestamp": 1786100554000,
+    "timestamp": 1786108774000,
     "categories": {
       "Organization": {
         "name": {
@@ -30,7 +30,7 @@
         "categories": [
           "Organization"
         ],
-        "lastUpdated": 1786100550000,
+        "lastUpdated": 1786108769000,
         "sourceCode": "https://github.com/Ahzed11/chore-app",
         "authorName": "Ahzed11",
         "name": {
@@ -42,9 +42,43 @@
         "description": {
           "en-US": "Self-hosted household chore coordinator. Members join a household via\ninvite link/QR, chores are auto-assigned round-robin (or manually),\ncompleting a chore awards fixed points, and a per-household leaderboard\nranks members by points (all-time / this-week / this-month).\n\n<b>Features</b>\n\n- Chores with recurrence, auto-assignment and admin reassignment\n- Points + leaderboards\n- Shared grocery list\n- Invite members via QR code / deep link\n- Bring your own server (server URL configured in-app)\n"
         },
-        "preferredSigner": "db2b6263fc4ace46a63c0f094c8c55229d2b9e3c703c2be690d9053b83e446d3"
+        "preferredSigner": "6113f55dd8dce6c27ddca5ec033aea123819820bd13833f20f4c45ae14cb7606"
       },
       "versions": {
+        "8226dc95034e26dc1145403de24fa0bf806b2be530f938a112666635c1ad1ca7": {
+          "added": 1786108769000,
+          "file": {
+            "name": "/chore-app_v1.0.1.apk",
+            "sha256": "8226dc95034e26dc1145403de24fa0bf806b2be530f938a112666635c1ad1ca7",
+            "size": 54585029
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86_64"
+            ],
+            "versionName": "1.0.1",
+            "versionCode": 10001,
+            "usesSdk": {
+              "minSdkVersion": 24,
+              "targetSdkVersion": 36
+            },
+            "signer": {
+              "sha256": [
+                "6113f55dd8dce6c27ddca5ec033aea123819820bd13833f20f4c45ae14cb7606"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.INTERNET"
+              },
+              {
+                "name": "dev.ahzed11.choreapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          }
+        },
         "8647dccc323067aaaa2b9f7b643ac36b9f7700bf4789ea6404fcb28906df8c71": {
           "added": 1786100550000,
           "file": {
