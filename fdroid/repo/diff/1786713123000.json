@@ -1,0 +1,14 @@
+{
+  "repo": {
+    "timestamp": 1786713126000
+  },
+  "packages": {
+    "dev.ahzed11.choreapp": {
+      "versions": {
+        "93dc781946cc6aad5eb9c792142301e5ead707019bc29f5b64baa62c6dafc46d": {
+          "releaseChannels": null
+        }
+      }
+    }
+  }
+}

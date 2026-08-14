@@ -1,0 +1,4 @@
+ChoreApp v1.0.3
+
+Automated release built from commit `cda131c028d3ede6f590cc75add4b5ff1193aff4` on `main`.
+The F-Droid repository indexes this release automatically.
