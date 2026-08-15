@@ -14,7 +14,7 @@
       }
     },
     "address": "https://raw.githubusercontent.com/Ahzed11/chore-app-fdroid/main/fdroid/repo",
-    "timestamp": 1786725086000,
+    "timestamp": 1786764185000,
     "categories": {
       "Organization": {
         "name": {
@@ -30,7 +30,7 @@
         "categories": [
           "Organization"
         ],
-        "lastUpdated": 1786725082000,
+        "lastUpdated": 1786764180000,
         "sourceCode": "https://github.com/Ahzed11/chore-app",
         "authorName": "Ahzed11",
         "name": {
@@ -45,6 +45,40 @@
         "preferredSigner": "f00964666c8f09e3c70b435f506340761c7922b27d8a54ce5b21863c9be600af"
       },
       "versions": {
+        "fe6a56024072e0708924b79077c1d11e7b9a1312c33fe0495fcd3867570b2c1e": {
+          "added": 1786764180000,
+          "file": {
+            "name": "/chore-app_v1.0.5.apk",
+            "sha256": "fe6a56024072e0708924b79077c1d11e7b9a1312c33fe0495fcd3867570b2c1e",
+            "size": 55295265
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86_64"
+            ],
+            "versionName": "1.0.5",
+            "versionCode": 10005,
+            "usesSdk": {
+              "minSdkVersion": 24,
+              "targetSdkVersion": 36
+            },
+            "signer": {
+              "sha256": [
+                "f00964666c8f09e3c70b435f506340761c7922b27d8a54ce5b21863c9be600af"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.INTERNET"
+              },
+              {
+                "name": "dev.ahzed11.choreapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          }
+        },
         "b5f002fd35f7c931e57b40520c384b65ed69a2c731bc9203e4ad7ca525ebee1f": {
           "added": 1786725082000,
           "file": {
