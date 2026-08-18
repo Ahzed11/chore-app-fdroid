@@ -14,7 +14,7 @@
       }
     },
     "address": "https://raw.githubusercontent.com/Ahzed11/chore-app-fdroid/main/fdroid/repo",
-    "timestamp": 1787065225000,
+    "timestamp": 1787068289000,
     "categories": {
       "Organization": {
         "name": {
@@ -30,7 +30,7 @@
         "categories": [
           "Organization"
         ],
-        "lastUpdated": 1787065221000,
+        "lastUpdated": 1787068285000,
         "sourceCode": "https://github.com/Ahzed11/chore-app",
         "authorName": "Ahzed11",
         "name": {
@@ -45,6 +45,74 @@
         "preferredSigner": "f00964666c8f09e3c70b435f506340761c7922b27d8a54ce5b21863c9be600af"
       },
       "versions": {
+        "dab72959a803f4b9ac483530dce959ca97d853dd4d492bd669e21028282c09bf": {
+          "added": 1787068285000,
+          "file": {
+            "name": "/chore-app_v1.0.8.apk",
+            "sha256": "dab72959a803f4b9ac483530dce959ca97d853dd4d492bd669e21028282c09bf",
+            "size": 57048509
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86_64"
+            ],
+            "versionName": "1.0.8",
+            "versionCode": 10008,
+            "usesSdk": {
+              "minSdkVersion": 24,
+              "targetSdkVersion": 36
+            },
+            "signer": {
+              "sha256": [
+                "f00964666c8f09e3c70b435f506340761c7922b27d8a54ce5b21863c9be600af"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.INTERNET"
+              },
+              {
+                "name": "dev.ahzed11.choreapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          }
+        },
+        "61a681a6cf907582286bf28a92023e13a8528f4cdee8618ac3895873434a240a": {
+          "added": 1787068284000,
+          "file": {
+            "name": "/chore-app_v1.0.7.apk",
+            "sha256": "61a681a6cf907582286bf28a92023e13a8528f4cdee8618ac3895873434a240a",
+            "size": 57048509
+          },
+          "manifest": {
+            "nativecode": [
+              "arm64-v8a",
+              "armeabi-v7a",
+              "x86_64"
+            ],
+            "versionName": "1.0.7",
+            "versionCode": 10007,
+            "usesSdk": {
+              "minSdkVersion": 24,
+              "targetSdkVersion": 36
+            },
+            "signer": {
+              "sha256": [
+                "f00964666c8f09e3c70b435f506340761c7922b27d8a54ce5b21863c9be600af"
+              ]
+            },
+            "usesPermission": [
+              {
+                "name": "android.permission.INTERNET"
+              },
+              {
+                "name": "dev.ahzed11.choreapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+              }
+            ]
+          }
+        },
         "428ff1ce3c737c6a77166ebae1a7ef5295f54bcec53ec3422339493e4a7c3531": {
           "added": 1787065221000,
           "file": {
