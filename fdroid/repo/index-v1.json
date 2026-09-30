@@ -1,6 +1,6 @@
 {
   "repo": {
-    "timestamp": 1790783433000,
+    "timestamp": 1790791917000,
     "version": 20002,
     "name": "ChoreApp F-Droid Repository",
     "icon": "icon.png",
@@ -17,8 +17,8 @@
       "categories": [
         "Organization"
       ],
-      "suggestedVersionName": "1.0.8",
-      "suggestedVersionCode": "10008",
+      "suggestedVersionName": "1.0.9",
+      "suggestedVersionCode": "10009",
       "description": "Self-hosted household chore coordinator. Members join a household via\ninvite link/QR, chores are auto-assigned round-robin (or manually),\ncompleting a chore awards fixed points, and a per-household leaderboard\nranks members by points (all-time / this-week / this-month).\n\n<b>Features</b>\n\n- Chores with recurrence, auto-assignment and admin reassignment\n- Points + leaderboards\n- Shared grocery list\n- Invite members via QR code / deep link\n- Bring your own server (server URL configured in-app)\n",
       "license": "Unknown",
       "name": "ChoreApp",
@@ -26,16 +26,45 @@
       "summary": "Vibe-coded chore management app. Made for self-hosting. Use at your own risk.",
       "added": 1786114117000,
       "packageName": "dev.ahzed11.choreapp",
-      "lastUpdated": 1787068285000,
+      "lastUpdated": 1790791913000,
       "localized": {
         "en-US": {
-          "whatsNew": "ChoreApp v1.0.8\n\nAutomated release built from commit `1386e69238014b4993c0dd3bf394a7d4a380bbb4` on `main`.\nThe F-Droid repository indexes this release automatically.\n"
+          "whatsNew": "ChoreApp v1.0.9\n\nAutomated release built from commit `b6defe4080614f778b6c984de6f45cf49f50de8e` on `main`.\nThe F-Droid repository indexes this release automatically.\n"
         }
       }
     }
   ],
   "packages": {
     "dev.ahzed11.choreapp": [
+      {
+        "added": 1790791913000,
+        "apkName": "chore-app_v1.0.9.apk",
+        "hash": "611571190922e3a717c47263ce36b0b36a9d1fcef165dcb44791bd35dd2b5c0e",
+        "hashType": "sha256",
+        "minSdkVersion": 24,
+        "nativecode": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "x86_64"
+        ],
+        "packageName": "dev.ahzed11.choreapp",
+        "sig": "82d6f05b094d4591727976f0bea7a842",
+        "signer": "f00964666c8f09e3c70b435f506340761c7922b27d8a54ce5b21863c9be600af",
+        "size": 57098169,
+        "targetSdkVersion": 36,
+        "uses-permission": [
+          [
+            "android.permission.INTERNET",
+            null
+          ],
+          [
+            "dev.ahzed11.choreapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+            null
+          ]
+        ],
+        "versionCode": 10009,
+        "versionName": "1.0.9"
+      },
       {
         "added": 1787068285000,
         "apkName": "chore-app_v1.0.8.apk",
