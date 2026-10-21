@@ -30,7 +30,10 @@ up the update without any manual reinstallation.
     </p>
 
 3. Open the link in F-Droid. It will ask you to add the repository. Everything should already be filled in correctly, so just press "OK".
-4. You can now install ChoreApp and you will receive updates automatically.
+4. You can now install ChoreApp or [BetterHome](https://github.com/Ahzed11/BetterHome) and you will receive updates automatically.
+
+### Signing keys
+Every app has its own signing key, and the repository refuses to publish an APK signed with any other (Android would refuse the update). `signing_cert.sha256` pins ChoreApp's certificate, `signing_certs.json` pins the others by package id, and `check_signatures.py` verifies each APK and the index against them; an app without a pin is refused. Run `python3 -m unittest test_check_signatures` to test the guard.
 
 ### How updates work
 1. A change is merged to `main` in [Ahzed11/chore-app](https://github.com/Ahzed11/chore-app) with a bumped version in `pubspec.yaml`.
