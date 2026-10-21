@@ -24,3 +24,24 @@ chore-app:
   # Valid category from https://f-droid.org/en/docs/Build_Metadata_Reference/#Categories
   categories:
     - Organization
+
+# Signed with its own key: pin its certificate in signing_certs.json (check_signatures.py refuses an app without one).
+betterhome:
+  git: https://github.com/Ahzed11/BetterHome
+  name: "BetterHome"
+  summary: "Share the chores of a home fairly, with points and shared lists"
+  description: |
+    Mobile app for people who share a home. Recurring chores are spread
+    fairly (round robin), effort is rewarded with points on a friendly
+    scoreboard, and members share checklists such as the groceries.
+
+    <b>Features</b>
+
+    - Recurring chores with fair automatic assignment and admin reassignment
+    - Points and a scoreboard per household (all-time / this month)
+    - Shared checklists for groceries and more
+    - Push notifications through a self-hosted Gotify server
+    - Bring your own server: the server address is entered in the app
+
+  categories:
+    - Organization

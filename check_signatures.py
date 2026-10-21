@@ -10,18 +10,21 @@ This guard is STRONGER than a cross-version consistency check. It:
 
   1. re-extracts the actual signing certificate from every .apk in the repo
      (APK Signature Scheme v2) — it does not trust the index metadata;
-  2. compares each APK's certificate SHA-256 against the PINNED value in
-     `signing_cert.sha256` (the single source of truth, committed here);
+  2. compares each APK's certificate SHA-256 against the PINNED value of its
+     app: `signing_certs.json` maps a package id to its pin, and a package
+     without an entry falls back to `signing_cert.sha256` (ChoreApp's pin), so
+     a new app is refused until it gets its own pin deliberately;
   3. cross-checks that every version's `signer` field in index-v1.json also
-     equals the pinned value.
+     equals the pinned value of its package.
 
 Because it validates against an absolute pin (not "matches the newest
 version"), it catches a keystore rotation even when the repo contains a
 single version, and it catches a wrong `signer` written by the index tooling.
 
-The pin MUST stay equal to `ANDROID_APK_CERT_SHA256` in Ahzed11/chore-app's
-CI secrets. Changing the keystore is a user-visible migration (uninstall +
-reinstall) and requires updating BOTH values deliberately — never silently.
+The pin of an app MUST stay equal to the certificate of the keystore in that
+app's CI secrets (for ChoreApp, `ANDROID_APK_CERT_SHA256` in Ahzed11/chore-app).
+Changing a keystore is a user-visible migration (uninstall + reinstall) and
+requires updating BOTH values deliberately — never silently.
 
 Usage: check_signatures.py <repo-dir>   (repo-dir is typically fdroid/repo)
 
@@ -98,6 +101,10 @@ def apk_signer_cert_sha256(apk_path):
     raise ValueError("no v2 signer block found")
 
 
+def _valid_pin(pin):
+    return len(pin) == 64 and all(c in "0123456789abcdef" for c in pin)
+
+
 def _load_pin() -> str:
     pin_path = os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "signing_cert.sha256"
@@ -111,7 +118,7 @@ def _load_pin() -> str:
         return ""
     with open(pin_path) as f:
         pin = f.read().strip().lower()
-    if len(pin) != 64 or any(c not in "0123456789abcdef" for c in pin):
+    if not _valid_pin(pin):
         print(
             f"ERROR: signing_cert.sha256 must contain exactly one 64-char hex "
             f"certificate SHA-256 (got {len(pin)} chars).",
@@ -121,39 +128,88 @@ def _load_pin() -> str:
     return pin
 
 
+def _load_app_pins():
+    """Pins of the apps other than the default one: {package id: SHA-256}.
+
+    Returns None when the file is present but unusable, so the caller refuses
+    to verify instead of silently ignoring a pin."""
+    pins_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "signing_certs.json"
+    )
+    if not os.path.exists(pins_path):
+        return {}
+    try:
+        with open(pins_path) as f:
+            raw = json.load(f)
+    except ValueError as e:
+        print(f"ERROR: signing_certs.json is not valid JSON ({e}).", file=sys.stderr)
+        return None
+    pins = {}
+    for package, pin in (raw.items() if isinstance(raw, dict) else []):
+        pin = str(pin).strip().lower()
+        if not _valid_pin(pin):
+            print(
+                f"ERROR: signing_certs.json: the pin of {package} must be one "
+                f"64-char hex certificate SHA-256.",
+                file=sys.stderr,
+            )
+            return None
+        pins[package] = pin
+    if not isinstance(raw, dict):
+        print("ERROR: signing_certs.json must be an object.", file=sys.stderr)
+        return None
+    return pins
+
+
 def main():
     if len(sys.argv) != 2:
         print(__doc__)
         return 2
     repo_dir = sys.argv[1]
-    expected = _load_pin()
-    if not expected:
+    default_pin = _load_pin()
+    if not default_pin:
         return 1
+    app_pins = _load_app_pins()
+    if app_pins is None:
+        return 1
+
+    def pin_of(package):
+        return app_pins.get(package, default_pin)
 
     problems = []
 
-    # 1. Re-extract the actual certificate from every APK; compare to the pin.
+    index = None
+    index_path = os.path.join(repo_dir, "index-v1.json")
+    if os.path.exists(index_path):
+        with open(index_path) as f:
+            index = json.load(f)
+    # The package of each APK file, from the index; an APK the index does not
+    # know is held to the default pin.
+    package_of = {}
+    if index is not None:
+        for package, versions in index.get("packages", {}).items():
+            for v in versions:
+                package_of[v.get("apkName")] = package
+
+    # 1. Re-extract the actual certificate from every APK; compare to its pin.
     apks = sorted(glob.glob(os.path.join(repo_dir, "*.apk")))
     if not apks:
         print(f"WARNING: no .apk files found under {repo_dir}", file=sys.stderr)
-    apk_certs = {}
     for apk in apks:
         name = os.path.basename(apk)
+        expected = pin_of(package_of.get(name))
         try:
             actual = apk_signer_cert_sha256(apk)
         except Exception as e:  # noqa: BLE001 - report and keep going
             problems.append(f"{name}: could not extract signing cert ({e})")
             continue
-        apk_certs[name] = actual
         if actual != expected:
             problems.append(f"{name}: APK signer {actual} != pinned {expected}")
 
-    # 2. Cross-check every version's `signer` field in the index against the pin.
-    index_path = os.path.join(repo_dir, "index-v1.json")
-    if os.path.exists(index_path):
-        with open(index_path) as f:
-            index = json.load(f)
+    # 2. Cross-check every version's `signer` field in the index against its pin.
+    if index is not None:
         for package, versions in index.get("packages", {}).items():
+            expected = pin_of(package)
             for v in versions:
                 signer = (v.get("signer") or "").lower()
                 if signer != expected:
@@ -171,19 +227,17 @@ def main():
         )
         for p in problems:
             print(f"  - {p}", file=sys.stderr)
-        print(f"  Pinned cert (signing_cert.sha256): {expected}", file=sys.stderr)
         print(
-            "  The APK keystore must never change silently. Restore the original "
-            "keystore secrets in Ahzed11/chore-app, or — only for a deliberate "
-            "uninstall/reinstall migration — update signing_cert.sha256 AND the "
-            "ANDROID_APK_CERT_SHA256 secret together.",
+            "  The APK keystore of an app must never change silently. Restore "
+            "the original keystore secrets of that app, or — only for a "
+            "deliberate uninstall/reinstall migration — update its pin "
+            "(signing_cert.sha256 for ChoreApp, signing_certs.json for the "
+            "others) AND the keystore secret together.",
             file=sys.stderr,
         )
         return 1
 
-    print(
-        f"OK: {len(apks)} APK(s) + index all signed with pinned cert {expected}"
-    )
+    print(f"OK: {len(apks)} APK(s) + index all signed with their pinned certs")
     return 0
 
 
